@@ -1,0 +1,30 @@
+#!/bin/bash
+
+COLOR='\033[0;36m'
+DELIMITER='\033[0m'
+
+# Watch changes iteration dealy
+DELAY=1
+
+# Kill process on user abort
+trap 'trap - INT; kill -s HUP -- -$$' INT
+
+while true
+do
+  CURRENT_CHANGE=$(md5sum $1 | awk '{print $1}')
+
+  if [[ "$CURRENT_CHANGE" != "$LAST_CHANGE" ]]
+  then
+    printf "${COLOR}[$(date +%H:%M:%S)] Compiling file $1 using deno ${DELIMITER}\n\n"
+    # Kill previos process
+    if [[ ! -z $PID ]]; then
+        kill $PID
+    fi
+    deno run -A $1 &
+    PID=$(echo $!)
+    printf "deno is running on PID: ${PID}\n"
+
+    LAST_CHANGE=$CURRENT_CHANGE
+    sleep $DELAY
+  fi
+done
