@@ -1,6 +1,8 @@
 # Denomon
 A nodmon replacement for denoJS.
+
 File changes watcher for develpoment environment.
+
 Watch & compile typescript file using deno with bash script.
 
 ![Example](./example.gif)
