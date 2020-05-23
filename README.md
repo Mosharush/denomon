@@ -11,7 +11,7 @@ Watch & compile typescript file using deno with bash script.
 
 1. Download bash script file
 ```
-wget https://raw.githubusercontent.com/Y2-MosheHarush/denomon/master/denomon -O /usr/local/bin/denomon && chmod +x /usr/local/bin/denomon
+wget https://raw.githubusercontent.com/MosHarush/denomon/master/denomon -O /usr/local/bin/denomon && chmod +x /usr/local/bin/denomon
 ```
 
 2. Run **denomon** using this command :
